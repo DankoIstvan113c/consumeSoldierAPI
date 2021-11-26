@@ -20,7 +20,7 @@
                 <th>shot people</th>
             </tr>
             <tr th:each="soldier : ${soldiers}">
-                <td th:text="${soldier.rank}">private</td>
+                <td><a th:text="${soldier.rank}" th:href="'/soldiers/'+${soldier.id}" href="#">private</a></td>
                 <td th:text="${soldier.birth}">birth</td>
                 <td th:text="${soldier.weapon}">weapon</td>
                 <td th:text="${soldier.shotpeople}">shot people</td>

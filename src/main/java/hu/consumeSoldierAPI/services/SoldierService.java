@@ -21,4 +21,10 @@ public class SoldierService {
        Soldier[] soldiers = restTemplate.getForObject(url, Soldier[].class);
        return Arrays.asList(soldiers);
     }
+
+    public Object getSoldier(int id) {
+        String url = REST_URL+"/{id}";
+        Soldier soldier = restTemplate.getForObject(url, Soldier.class, id);
+        return soldier;
+    }
 }
