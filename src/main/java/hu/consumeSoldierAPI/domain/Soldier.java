@@ -11,7 +11,6 @@ public class Soldier {
     private int shotpeople;
 
     public Soldier() {
-
     }
 
     public int getId() {
@@ -60,17 +59,5 @@ public class Soldier {
 
     public void setShotpeople(int shotpeople) {
         this.shotpeople = shotpeople;
-    }
-
-    @Override
-    public String toString() {
-        return "Soldier{" +
-                "id=" + id +
-                ", rank='" + rank + '\'' +
-                ", birth=" + birth +
-                ", weapon='" + weapon + '\'' +
-                ", alive=" + alive +
-                ", shotpeople=" + shotpeople +
-                '}';
     }
 }

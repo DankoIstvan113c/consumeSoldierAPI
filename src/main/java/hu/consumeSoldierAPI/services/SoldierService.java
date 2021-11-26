@@ -15,14 +15,13 @@ public class SoldierService {
     private RestTemplate restTemplate;
     private final String REST_URL = "http://localhost:8080/soldiers";
 
-
     public List<Soldier> getSoldiers() {
-       String url = REST_URL;
-       Soldier[] soldiers = restTemplate.getForObject(url, Soldier[].class);
-       return Arrays.asList(soldiers);
+        String url = REST_URL;
+        Soldier[] soldiers = restTemplate.getForObject(url, Soldier[].class);
+        return Arrays.asList(soldiers);
     }
 
-    public Object getSoldier(int id) {
+    public Soldier getSoldier(int id) {
         String url = REST_URL+"/{id}";
         Soldier soldier = restTemplate.getForObject(url, Soldier.class, id);
         return soldier;

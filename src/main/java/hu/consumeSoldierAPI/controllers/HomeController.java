@@ -2,10 +2,12 @@ package hu.consumeSoldierAPI.controllers;
 
 import hu.consumeSoldierAPI.services.SoldierService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @Controller
 public class HomeController {
@@ -17,7 +19,7 @@ public class HomeController {
     public String home(){
         return "index";
     }
-
+    
     @GetMapping("/soldiers")
     public String getSoldiers(Model model){
         model.addAttribute("soldiers", service.getSoldiers());
@@ -25,8 +27,26 @@ public class HomeController {
     }
 
     @GetMapping("/soldiers/{id}")
-    public String getSoldier(@PathVariable("id") int id, Model model) {
-            model.addAttribute("soldier", service.getSoldier(id));
-            return "soldier";
+    public String getSoldier(@PathVariable("id") int id, Model model){
+        model.addAttribute("soldier", service.getSoldier(id));
+        return "soldier";
     }
+
+    @GetMapping("/newsoldier")
+    public String newSoldier(){
+        return "newsoldier";
+    }
+
+    @PostMapping("/soldiers")
+    public String addSoldier(@RequestParam("rank") String rank,
+                             @RequestParam("birth") Date birth,
+                             @RequestParam("weapon") String weapon,
+                             @RequestParam("shotpeople") int shotpeople,
+                             Model model){
+        // service.addSoldier(rank, birth, weapon, shotpeople);
+        model.addAttribute("soldiers", service.getSoldiers());
+        return "soldiers";
+    }
+
+
 }
