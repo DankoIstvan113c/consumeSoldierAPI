@@ -39,11 +39,12 @@ public class HomeController {
 
     @PostMapping("/soldiers")
     public String addSoldier(@RequestParam("rank") String rank,
-                             @RequestParam("birth") Date birth,
+                             @RequestParam("birth") String birth,
                              @RequestParam("weapon") String weapon,
                              @RequestParam("shotpeople") int shotpeople,
                              Model model){
-        // service.addSoldier(rank, birth, weapon, shotpeople);
+        int statusCode = service.addSoldier(rank, birth, weapon, shotpeople);
+        model.addAttribute("statuscode", statusCode);
         model.addAttribute("soldiers", service.getSoldiers());
         return "soldiers";
     }
