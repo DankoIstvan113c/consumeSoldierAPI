@@ -50,9 +50,11 @@ public class HomeController {
     }
     @DeleteMapping("/soldiers")
     public String disarmSoldier(@RequestParam("id") int id, Model model){
+        System.out.println("deletemapping()");
         service.disarmSoldier(id);
         model.addAttribute("soldiers", service.getSoldiers());
         return "soldiers";
     }
+
 
 }
